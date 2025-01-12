@@ -1,0 +1,19 @@
+{
+  "name": "tin-zad4",
+  "version": "1.0.0",
+  "main": "start.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "s23551",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "eslint": "^9.18.0"
+  },
+  "keywords": [],
+  "description": ""
+}

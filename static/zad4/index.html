@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<head>
+    <script>
+        async function validateForm() {
+            const firstName = document.getElementById("firstName");
+            const firstNameError = document.getElementById("firstName-error");
+
+            firstNameError.innerHTML = "";
+
+            /*
+            if (!firstName.value) {
+                const firstNameError = document.getElementById("firstName-error");
+                firstNameError.innerHTML = "First name is required";
+                return;    
+            }
+            */
+
+            try {
+                const response = await fetch("http://localhost:3000/zad4/submit", { 
+                    method: 'POST',
+                    headers: new Headers({'content-type': 'application/json'}),
+                    body: JSON.stringify({ firstName: firstName.value }),
+                });
+
+                if (response.ok) {
+                    document.getElementById("success").innerHTML = "Success";
+                    return;
+                }
+
+                const errors = await response.json();
+                if (errors.firstName) {
+                    firstNameError.innerHTML = errors.firstName;
+                }
+            } catch {
+                alert('ERROR')
+            }
+
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <h1>Zad4 Index.html</h1>
+    <form>
+        <input name="firstName" id="firstName"/>
+        <div id="firstName-error"></div>
+
+        <button onclick="validateForm()" type="button">Submit form</button>
+    </form>
+
+    <div id="success"></div>
+</body>
